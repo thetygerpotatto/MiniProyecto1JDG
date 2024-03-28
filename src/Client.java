@@ -11,6 +11,7 @@ public class Client
     private String userCreationDate;
     
     //*Constructor
+
     public Client(String name, String idCard, double incomeLevel, String userCreationDate)
     {
         this.name = name;
