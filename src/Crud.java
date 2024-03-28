@@ -10,7 +10,7 @@ public class Crud
 {
 
     static ArrayList<Client> clients = new ArrayList<Client>();
-    static Map<Integer, Double> moneyData = new HashMap<Integer, Double>() ;
+    static Map<String, Double> moneyData = new HashMap<String, Double>() ;
     static Client currentClient; 
     static Scanner input = new Scanner(System.in);  
 
@@ -59,20 +59,21 @@ public class Crud
     static void createClient()
     {
         String name;
-        int idCard;
+        String idCard;
         double incomeLevel;
-        int userCreationDate;
+        String userCreationDate;
 
         System.out.println("\033[H\033[2J"); // This thing cleans the screen 
         System.out.println("Creacion de Cliente:"); 
         System.out.println("Ingrese el nombre:");
-        name = input.next();
+        input.nextLine(); // This is to clean the line jump from the buffer
+        name = input.nextLine();
         System.out.println("Ingrese el id:");
-        idCard = input.nextInt();
+        idCard = input.next();
         System.out.println("Ingrese el nivel de ingreso:");
         incomeLevel = input.nextDouble();
         System.out.println("Ingrese la fecha de creacion del ususario:");
-        userCreationDate = input.nextInt();
+        userCreationDate = input.next();
 
         moneyData.put(idCard, 0.0);
 
