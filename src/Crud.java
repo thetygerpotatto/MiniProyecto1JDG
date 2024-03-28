@@ -12,7 +12,7 @@ public class Crud
     static ArrayList<Client> clients = new ArrayList<Client>();
     static Map<Integer, Double> moneyData = new HashMap<Integer, Double>() ;
     static Client currentClient; 
-    
+    static Scanner input = new Scanner(System.in);  
 
     public static void main(String[] args) throws Exception 
     {
@@ -22,12 +22,11 @@ public class Crud
     static void menu() 
     {
         int option = -1;
-        Scanner scanner = new Scanner(System.in);
             
         do 
         {
             String currentC = currentClient == null ? "Ninguno" : currentClient.getName();
-            
+            System.out.println("\033[H\033[2J"); // This thing cleans the screen 
             System.out.println("Sistema de Administracion de Clientes                   Cliente Actual: " + currentC);
             System.out.println("1- Crear Cliente");
             System.out.println("2- Seleccionar Cliente");
@@ -36,8 +35,13 @@ public class Crud
             System.out.println("5- Buscar Cliente por nombre y mostrar ahorro");
             System.out.println("6- Listar Clientes");
             System.out.println("0- Salir");
-
-            option = scanner.nextInt();
+            try 
+            {
+                option = input.nextInt();
+            } 
+            catch ( Exception e) {
+                System.out.println(e.getMessage());
+            }
             switch (option) {
                 case 1: createClient();  break;
                 case 2: selectClient(); break;
@@ -49,17 +53,17 @@ public class Crud
             }
         } while (option != 0);
 
-        scanner.close();
+        input.close();
     }
 
     static void createClient()
     {
-        Scanner input = new Scanner(System.in);
         String name;
         int idCard;
         double incomeLevel;
         int userCreationDate;
 
+        System.out.println("\033[H\033[2J"); // This thing cleans the screen 
         System.out.println("Creacion de Cliente:"); 
         System.out.println("Ingrese el nombre:");
         name = input.next();
@@ -75,55 +79,51 @@ public class Crud
         clients.add(new Client(name, idCard, incomeLevel, userCreationDate));
         if (clients.size() == 1) currentClient = clients.get(0);
 
-        input.close();
     } 
 
     static void selectClient() 
     {
-        Scanner input = new Scanner(System.in);
         int index;
+        System.out.println("\033[H\033[2J"); // This thing cleans the screen 
         // the method listClients should show an enumerated list from 1 to the number of users that are in the system;
         listClients();
         System.out.println("Ingrese el numero de cliente que desea seleccionar");
         index = input.nextInt();
         currentClient = clients.get(index-1);
-        input.close();
     }
 
     static void insertMoney() 
     {
-        Scanner input = new Scanner(System.in);
         double moneyToAdd, moneySaved;
         moneySaved = moneyData.get(currentClient.getIdCard());
 
+        System.out.println("\033[H\033[2J"); // This thing cleans the screen 
         System.out.println("Ingrese la cantidad que desea agregar a la cuenta");
         moneyToAdd = input.nextDouble();
 
         moneyData.put(currentClient.getIdCard(), moneySaved + moneyToAdd);
-
-        input.close();
     }
 
     static void updateMoney() 
     {
-        Scanner input = new Scanner(System.in);
         double money;
 
+        System.out.println("\033[H\033[2J"); // This thing cleans the screen 
         System.out.println("Ingrese la cantidad que desea asignar a la cuenta");
         money = input.nextDouble();
 
         moneyData.put(currentClient.getIdCard(), money);
 
-        input.close();
-
     }
 
     static void searchByName() {
-       System.out.println("TODO"); 
+        System.out.println("\033[H\033[2J"); // This thing cleans the screen 
+        System.out.println("TODO"); 
     }
 
     static void listClients()
     { //TO DO
-       System.out.println("TODO"); 
+        System.out.println("\033[H\033[2J"); // This thing cleans the screen 
+        System.out.println("TODO"); 
     }
 }
