@@ -90,7 +90,8 @@ public class Crud
         input.close();
     }
 
-    static void insertMoney() {
+    static void insertMoney() 
+    {
         Scanner input = new Scanner(System.in);
         double moneyToAdd, moneySaved;
         moneySaved = moneyData.get(currentClient.getIdCard());
@@ -103,7 +104,8 @@ public class Crud
         input.close();
     }
 
-    static void updateMoney() {
+    static void updateMoney() 
+    {
         Scanner input = new Scanner(System.in);
         double money;
 
