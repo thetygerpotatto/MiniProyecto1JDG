@@ -8,10 +8,11 @@ public class Client
     private String name;
     private String idCard;
     private double incomeLevel;
-    private int userCreationDate;
+    private String userCreationDate;
     
     //*Constructor
-    public Client(String name, String idCard, double incomeLevel, int userCreationDate)
+
+    public Client(String name, String idCard, double incomeLevel, String userCreationDate)
     {
         this.name = name;
         this.idCard = idCard;
@@ -50,11 +51,11 @@ public class Client
     }
 
     //?UserCreationDate-------------------
-    public int getUserCreationDate()
+    public String getUserCreationDate()
     {
         return userCreationDate;
     }
-    public void setUserCreationDate(int userCreationDate)
+    public void setUserCreationDate(String userCreationDate)
     {
         this.userCreationDate = userCreationDate;
     }
