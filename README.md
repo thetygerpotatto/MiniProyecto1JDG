@@ -1,7 +1,10 @@
+# Creación del Crud
 
-#Creación del Crud
-##Desarrolladores:
+## Desarrolladores:
+
 ->Jaime Andres Noreña
+
 ->Gabriel Uraza García
+
 ->Diego Fernando Lennis
 
