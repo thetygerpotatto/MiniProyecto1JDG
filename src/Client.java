@@ -6,12 +6,13 @@ public class Client
 {
     //*Variables
     private String name;
-    private int idCard;
+    private String idCard;
     private double incomeLevel;
-    private int userCreationDate;
+    private String userCreationDate;
     
     //*Constructor
-    public Client(String name, int idCard, double incomeLevel, int userCreationDate)
+
+    public Client(String name, String idCard, double incomeLevel, String userCreationDate)
     {
         this.name = name;
         this.idCard = idCard;
@@ -30,11 +31,11 @@ public class Client
     }
 
     //?IdCard-------------------------
-    public int getIdCard()
+    public String getIdCard()
     {
         return idCard;
     }
-    public void setIdCard(int idCard)
+    public void setIdCard(String idCard)
     {
         this.idCard = idCard;
     }
@@ -50,11 +51,11 @@ public class Client
     }
 
     //?UserCreationDate-------------------
-    public int getUserCreationDate()
+    public String getUserCreationDate()
     {
         return userCreationDate;
     }
-    public void setUserCreationDate(int userCreationDate)
+    public void setUserCreationDate(String userCreationDate)
     {
         this.userCreationDate = userCreationDate;
     }
