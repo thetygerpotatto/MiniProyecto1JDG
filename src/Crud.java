@@ -117,14 +117,43 @@ public class Crud
 
     }
 
-    static void searchByName() {
-        System.out.println("\033[H\033[2J"); // This thing cleans the screen 
-        System.out.println("TODO"); 
+    static void printClient(Client pClient)
+    {
+        System.out.println("NOMBRE : " + pClient.getName());
+        System.out.println("ID : " + pClient.getIdCard());
+        System.out.println("FECHA CREACIÓN : " + pClient.getUserCreationDate());
+    }
+  
+    static void searchByName() 
+    {
+        String lookingFor;
+        boolean foundClient = false;
+
+        //System.out.println("\033[H\033[2J"); // This thing cleans the screen 
+        System.out.println("Ingresa un nombre de cliente valido para mostrar sus datos"); 
+    
+        lookingFor = input.next();
+
+        for(int i = 0; i <= ((clients.size())-1 ); i++)//for cicle ---> iterate all indexes
+        {
+            if((clients.get(i)).getName().equals(lookingFor)) System.out.println((clients.get(i)).getName() + " AHORRO TOTAL :     " + moneyData.get(clients.get(i).getIdCard()) ); //printClient(clients.get(i));
+            if((clients.get(i)).getName().equals(lookingFor))foundClient = true;
+        }
+        if(foundClient == false) System.out.println("no hay naides que se llame asi");
+        input.next(); //makes a pause to show client data
+        
     }
 
     static void listClients()
-    { //TO DO
+    {
         System.out.println("\033[H\033[2J"); // This thing cleans the screen 
-        System.out.println("TODO"); 
+
+        for(int i = 0; i <= ((clients.size())-1 ); i++)//for cicle ---> iterate all indexes
+        {
+            System.out.println(Integer.toString(i+1) + " : "); //printClient(clients.get(i));
+            printClient(clients.get(i));
+
+        }
+        input.next();
     }
 }
