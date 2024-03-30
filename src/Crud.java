@@ -116,12 +116,14 @@ public class Crud
         moneyData.put(currentClient.getIdCard(), money);
 
     }
+
     static void printClient(Client pClient)
     {
         System.out.println("NOMBRE : " + pClient.getName());
         System.out.println("ID : " + pClient.getIdCard());
         System.out.println("FECHA CREACIÓN : " + pClient.getUserCreationDate());
     }
+  
     static void searchByName() 
     {
         String lookingFor;
