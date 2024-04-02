@@ -1,4 +1,6 @@
+
 //* Importacion de librearias
+
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -83,12 +85,14 @@ public class Crud
     }
 
     //!Funcion que permite crear un cliente--------------------------------------------------------
+
     static void createClient()
     {
         String name;
         String idCard;
         double incomeLevel;
         String userCreationDate;
+
 
         System.out.println("\033[H\033[2J"); //?This thing cleans the screen 
         System.out.println("Creacion de Cliente:"); 
@@ -110,6 +114,7 @@ public class Crud
 
         clients.add(new Client(name, idCard, incomeLevel, userCreationDate));
         if (clients.size() == 1) currentClient = clients.get(0);
+
     } 
 
     //!Funcion que permite seleccionar un cliente--------------------------------------------------
@@ -124,6 +129,7 @@ public class Crud
         index = input.nextInt();
         currentClient = clients.get(index-1);
     }
+
 
     //!Funcion que inserta dinero------------------------------------------------------------------
     static void insertMoney() 
@@ -142,6 +148,7 @@ public class Crud
     {
         double money;
 
+
         System.out.println("\033[H\033[2J"); //?This thing cleans the screen 
         System.out.println("Ingrese la cantidad que desea asignar a la cuenta");
         money = input.nextDouble();
@@ -154,6 +161,7 @@ public class Crud
     {
         System.out.println("NOMBRE : " + pClient.getName());
         System.out.println("ID : " + pClient.getIdCard());
+
         System.out.println("FECHA CREACIÓN : " + pClient.getUserCreationDate() + "\n");
     }
 

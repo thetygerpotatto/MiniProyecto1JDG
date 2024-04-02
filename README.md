@@ -2,9 +2,9 @@
 
 ## Desarrolladores:
 
-> Jaime Andres Noreña
+> Jaime Andres Noreña - 2359523
 
-> Gabriel Uraza García
+> Gabriel Uraza García - 2359594
 
-> Diego Fernando Lennis
+> Diego Fernando Lennis - 23595
 
