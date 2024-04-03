@@ -38,6 +38,7 @@ public class Crud
             System.out.println(" O sino, tambien podrias: \n");
             System.out.println("6- Crear Cliente");
             System.out.println("7- Seleccionar Cliente");
+            System.out.println("8- Solicitar Prestamo");
             System.out.println("0- Salir");
 
             System.out.println("Elige una opcion: "); 
@@ -53,6 +54,7 @@ public class Crud
                 case 5: listClients(); break;
                 case 6: createClient();  break;
                 case 7: selectClient(); break;
+                case 8: makeLoan(); break;
             }
         } while (option != 0);
 
@@ -211,15 +213,17 @@ public class Crud
     */
 
     //!Funcion que permite pedir prestado
-    static void pedirPrestado()
+    static void makeLoan()
     {   
         //*Nota: Cree la vairable dinero actual la cual simulara el dinero que este en la cuenta, con el fin de porder
         //* realizar varias pruebas libremente, logicamente esto sera temporal, luego se sustituira por el espacio en la matrix
         double dineroPrestado;
-        int dineroActual;
-        dineroActual = 5000;
+        double dineroActual;
+        dineroActual = moneyData.get(currentClient.getIdCard());
 
         System.out.println("\033[H\033[2J"); //?This thing cleans the screen 
+
+        System.out.println("dinero actual : " + dineroActual);
 
         System.out.println("Porfavor ingrese la cantidad de dinero que quiere pedir prestado: ");
         dineroPrestado = input.nextDouble();
@@ -227,7 +231,12 @@ public class Crud
         if(dineroPrestado <= dineroActual )
         {
             System.out.println("El dinero que has pedido te sera prestado");
-            System.out.println("Tu dinero actual en la cuenta ahora es de: " + (dineroPrestado + (double)dineroActual));
+  
+            moneyData.put(currentClient.getIdCard() , moneyData.get(currentClient.getIdCard()) + dineroPrestado);
+            dineroActual = moneyData.get(currentClient.getIdCard());
+            System.out.println("Tu dinero actual en la cuenta ahora es de: " + dineroActual);
+        
+            input.next();
         }
         else
         {
