@@ -84,7 +84,7 @@ public class Crud
             System.out.println(
             "La cantidad de dinero que se desea eliminar excede la cantidad de dinero actual");
         }
-        System.out.println("\n Ingrese cualquier cosa y oprima enter para regresar");
+        System.out.println("\n Ingrese cualquier mensaje y oprima enter para continuar");
         input.next(); //?makes a pause to show client data
     }
 
@@ -186,7 +186,7 @@ public class Crud
             if((clients.get(i)).getName().equals(lookingFor))foundClient = true;
         }
         if(foundClient == false) System.out.println("no hay naides que se llame asi");
-        System.out.println("\n Ingrese cualquier cosa y oprima enter para regresar");
+        System.out.println("\n Ingrese cualquier mensaje y oprima enter para continuar");
         input.next(); //?makes a pause to show client data
     }
 
@@ -201,7 +201,7 @@ public class Crud
             "----------------" + " Cliente numero " + Integer.toString(i+1) + " ----------------"); 
             printClient(clients.get(i)); 
         }
-        System.out.println("\n Ingrese cualquier cosa y oprima enter para regresar");
+        System.out.println("\n Ingrese cualquier mensaje y oprima enter para continuar");
         input.next();
     }
 
@@ -215,37 +215,80 @@ public class Crud
     imprimirá por consola el valor de su cuota mensual 
     */
 
-    //!Funcion que permite pedir prestado
-    static void makeLoan()
-    {   
-        //*Nota: Cree la vairable dinero actual la cual simulara el dinero que este en la cuenta, con el fin de porder
-        //* realizar varias pruebas libremente, logicamente esto sera temporal, luego se sustituira por el espacio en la matrix
-        double dineroPrestado;
-        double dineroActual;
-        dineroActual = moneyData.get(currentClient.getIdCard());
-
-        System.out.println("\033[H\033[2J"); //?This thing cleans the screen 
-
-        System.out.println("dinero actual : " + dineroActual);
-
-        System.out.println("Porfavor ingrese la cantidad de dinero que quiere pedir prestado: ");
-        dineroPrestado = input.nextDouble();
-
-        if(dineroPrestado <= dineroActual )
+        //!Funcion que permite pedir prestado
+        static void updateLoan(double dineroActual, double dineroPrestado)
         {
             System.out.println("El dinero que has pedido te sera prestado");
-  
             moneyData.put(currentClient.getIdCard() , moneyData.get(currentClient.getIdCard()) + dineroPrestado);
             dineroActual = moneyData.get(currentClient.getIdCard());
-            System.out.println("Tu dinero actual en la cuenta ahora es de: " + dineroActual);
-        
+            System.out.println("Tu dinero actual en la cuenta es de: " + dineroActual + "\n");
+    
+            System.out.println("\n Ingrese cualquier mensaje y oprima enter para regresar");
             input.next();
         }
-        else
-        {
-            //?Esta parte le toca a lennis 
+    
+        static void loanFee(double dineroPrestado)
+        {   
+            double feeInterest;
+            double share;
+    
+            feeInterest = dineroPrestado*Math.pow(1 + (0.02), 6);
+            share = feeInterest/6;
+    
+            System.out.println("Este prestamo tiene un interés del 2% ");
+            System.out.println("Para su prestamo equivale a " + feeInterest);
+            System.out.println("Se le cobraran 6 cuotas mensuales de " + share );
+    
+            System.out.println("\n Ingrese cualquier mensaje y oprima enter para regresar");
+            input.next();
         }
-    }
+    
+        static void makeLoan()
+        {   
+            //*Nota: Cree la vairable dinero actual la cual simulara el dinero que este en la cuenta, con el fin de porder
+            //* realizar varias pruebas libremente, logicamente esto sera temporal, luego se sustituira por el espacio en la matrix
+            double dineroPrestado;
+            double dineroActual;
+            dineroActual = moneyData.get(currentClient.getIdCard());
+    
+            System.out.println("\033[H\033[2J"); //?This thing cleans the screen 
+    
+            System.out.println("dinero actual : " + dineroActual);
+    
+            System.out.println("Porfavor ingrese la cantidad de dinero que quiere pedir prestado: ");
+            dineroPrestado = input.nextDouble();
+    
+            if(dineroPrestado <= dineroActual )
+            {
+      
+                updateLoan(dineroActual, dineroPrestado);
+            
+                input.next();
+            }
+            /*En el último caso, se le presta a la persona en 6 cuotas mensuales, y teniendo en cuenta un interés compuesto del 2% 
+            efectivo anual (investigar), se imprimirá por consola el valor de su cuota mensual 
+        */
+            else if (dineroPrestado > dineroActual & dineroPrestado <= dineroActual * 2)
+            {
+                
+                System.out.println("La cifra solicitada excede sus ahorros");
+                System.out.println("Se encuentra dentro del limite permitido(hasta el doble de sus ahorros)");
+    
+                updateLoan(dineroActual, dineroPrestado);
+                loanFee(dineroPrestado);
+    
+            }
+            else
+            {
+                System.out.println("La cifra solicitada excede sus ahorros");
+                System.out.println("excede el limite permitido(hasta el doble de sus ahorros)");
+                System.out.println("su prestamo no puede ser procesado, puede intentar con una cifra dentro del limite");
+                System.out.println("(" + dineroActual*2 + ")");
+                
+                System.out.println("\n Ingrese cualquier mensaje y oprima enter para regresar");
+                input.next();
+            }
+        }
 
     static void askForCDT() {
         double interestRate = 0;
@@ -276,7 +319,7 @@ public class Crud
         gains = moneyData.get(currentClient.getIdCard()) * interestRate * (days / 365.0);
         
         System.out.println("Usted ganara " + gains + " pesos despues de " + days + " dias ");
-        System.out.println("Ingrese cualquier simbolo para continuar");
+        System.out.println("Ingrese cualquier mensaje y presione enter para continuar");
         input.next();
     }
 }
