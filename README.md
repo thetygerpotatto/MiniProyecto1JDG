@@ -6,5 +6,5 @@
 
 > Gabriel Uraza García - 2359594
 
-> Diego Fernando Lennis - 23595
+> Diego Fernando Lenis - 2359540
 
