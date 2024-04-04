@@ -205,7 +205,6 @@ public class Crud
         input.next();
     }
 
-<<<<<<< HEAD
 
     /*
     Uncliente puede pedir dinero prestado. Si pide menos o igual de lo que tiene ahorrado, lo puede hacer y 
@@ -246,7 +245,8 @@ public class Crud
         {
             //?Esta parte le toca a lennis 
         }
-=======
+    }
+
     static void askForCDT() {
         double interestRate = 0;
         double gains = 0;
@@ -278,6 +278,5 @@ public class Crud
         System.out.println("Usted ganara " + gains + " pesos despues de " + days + " dias ");
         System.out.println("Ingrese cualquier simbolo para continuar");
         input.next();
->>>>>>> main
     }
 }
