@@ -28,19 +28,21 @@ public class Crud
         { //?ESTA ES LA INTERFAZ DEL CRUD
             String currentC = currentClient == null ? "Ninguno" : currentClient.getName();
             System.out.println("\033[H\033[2J"); //?This thing cleans the screen 
-            System.out.println("Sistema de Administracion de Clientes                   " +
-            "Cliente Actual: " + currentC + "\n");
-            System.out.println("1- Insertar Dinero");
-            System.out.println("2- Actualizar Dinero");
-            System.out.println("3- Eliminar Dinero");
-            System.out.println("4- Buscar Cliente por nombre y mostrar ahorro");
-            System.out.println("5- Listar Clientes \n");
-            System.out.println(" O sino, tambien podrias: \n");
+            System.out.println("Sistema de Administracion de Clientes                   Cliente Actual: " + currentC + "\n");
+            if (currentClient != null) {
+                System.out.println("1- Insertar Dinero");
+                System.out.println("2- Actualizar Dinero");
+                System.out.println("3- Eliminar Dinero");
+                System.out.println("4- Buscar Cliente por nombre y mostrar ahorro");
+                System.out.println("5- Listar Clientes \n");
+                System.out.println(" O sino, tambien podrias: \n");
+            }
+
             System.out.println("6- Crear Cliente");
             System.out.println("7- Seleccionar Cliente");
             System.out.println("8- Solicitar Prestamo");
+            System.out.println("9- Pedir un cdt");
             System.out.println("0- Salir");
-
             System.out.println("Elige una opcion: "); 
             option = input.nextInt();
             
@@ -55,6 +57,7 @@ public class Crud
                 case 6: createClient();  break;
                 case 7: selectClient(); break;
                 case 8: makeLoan(); break;
+                case 9: askForCDT(); break;
             }
         } while (option != 0);
 
@@ -202,6 +205,7 @@ public class Crud
         input.next();
     }
 
+<<<<<<< HEAD
 
     /*
     Uncliente puede pedir dinero prestado. Si pide menos o igual de lo que tiene ahorrado, lo puede hacer y 
@@ -242,5 +246,38 @@ public class Crud
         {
             //?Esta parte le toca a lennis 
         }
+=======
+    static void askForCDT() {
+        double interestRate = 0;
+        double gains = 0;
+        byte option = 0;
+        boolean rightAnswer = false;
+
+
+        System.out.println("\033[H\033[2J"); //?This thing cleans the screen
+        System.out.println("Dinero ahorrado: " + Double.toString(moneyData.get(currentClient.getIdCard())));
+        while (!rightAnswer) {
+            System.out.println("Seleccione a cuantos meses desea que sea su cdt\n1- 3 meses \n2- 6 meses");
+            option = input.nextByte();
+            switch (option) {
+                case 1:  
+                    interestRate = 0.03;
+                    rightAnswer = true;
+                    break;
+                case 2:
+                    interestRate = 0.05;
+                    rightAnswer = true;
+                    break;
+            }
+            if (!rightAnswer) System.out.println("Seleccion incorrecta. Por favor seleccione entre 1 y 2");
+        }
+
+        double days = option == 1 ? 30 : 60;
+        gains = moneyData.get(currentClient.getIdCard()) * interestRate * (days / 365.0);
+        
+        System.out.println("Usted ganara " + gains + " pesos despues de " + days + " dias ");
+        System.out.println("Ingrese cualquier simbolo para continuar");
+        input.next();
+>>>>>>> main
     }
 }
